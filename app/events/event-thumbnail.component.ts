@@ -13,7 +13,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
                 <span>&nbsp;</span>
                 <span>{{event.location.city}}, {{event.location.country}}</span>
             </div>
-            <button class="btn btn-primary" (click)="handleClickMe()">Test</button>
         </div>
     `
 })
@@ -21,10 +20,5 @@ export class EventThumbnailComponent {
     // Public prop in typescript that allows any datatype for event
     // Input: tells Ang that this event will be passed from another comp (Parent to child)
     @Input() event:any
-    // Output: Child to parent
-    @Output() eventClick = new EventEmitter()
 
-    handleClickMe() {
-        this.eventClick.emit(this.event.name)
-    }
 }
