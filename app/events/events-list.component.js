@@ -1,3 +1,4 @@
+// Parent component
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -28,7 +29,7 @@ var EventsListComponent = (function () {
     EventsListComponent = __decorate([
         core_1.Component({
             selector: 'events-list',
-            template: "\n    <div>\n        <h1>Upcoming Angular 2 Events</h1>\n        <hr/>\n        <!--#thumbnail: this variable now can be accessed anywhere in the template-->\n        <event-thumbnail #thumbnail [event]=\"event1\"></event-thumbnail>\n        <h3>{{thumbnail.someProp}}</h3>\n        <button class=\"btn btn-primary\" (click)=\"thumbnail.logFoo()\">Click</button>\n    </div>\n    "
+            template: "\n    <div>\n        <h1>Upcoming Angular 2 Events</h1>\n        <hr/>\n        <!--#thumbnail: this variable now can be accessed anywhere in the template-->\n        <event-thumbnail [event]=\"event1\"></event-thumbnail>\n    </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], EventsListComponent);

@@ -1,3 +1,5 @@
+// Parent component
+
 import { Component } from '@angular/core'
 
 @Component({
@@ -7,9 +9,7 @@ import { Component } from '@angular/core'
         <h1>Upcoming Angular 2 Events</h1>
         <hr/>
         <!--#thumbnail: this variable now can be accessed anywhere in the template-->
-        <event-thumbnail #thumbnail [event]="event1"></event-thumbnail>
-        <h3>{{thumbnail.someProp}}</h3>
-        <button class="btn btn-primary" (click)="thumbnail.logFoo()">Click</button>
+        <event-thumbnail [event]="event1"></event-thumbnail>
     </div>
     `
 })
