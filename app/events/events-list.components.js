@@ -28,7 +28,7 @@ var EventsListComponent = (function () {
     EventsListComponent = __decorate([
         core_1.Component({
             selector: 'events-list',
-            template: "\n    <div>\n        <h1>Upcoming Angular 2 Events</h1>\n        <hr/>\n        <div class=\"well hoverwell thumbnail\">\n            <h2>{{event.name}}</h2>\n            <div>Date: {{event.date}}</div>\n            <div>Time: {{event.time}}</div>\n            <div>Price: {{event.price}}</div>\n            <div>\n                <span>Location: {{event.location.address}}</span>\n                <span>&nbsp;</span>\n                <span>{{event.location.city}}, {{event.location.country}}</span>\n            </div>\n        </div>\n    </div>\n    "
+            templateUrl: 'app/events/events-list.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], EventsListComponent);
