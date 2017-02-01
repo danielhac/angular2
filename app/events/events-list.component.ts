@@ -6,7 +6,10 @@ import { Component } from '@angular/core'
     <div>
         <h1>Upcoming Angular 2 Events</h1>
         <hr/>
-        <event-thumbnail [event]="event1"></event-thumbnail>
+        <!--#thumbnail: this variable now can be accessed anywhere in the template-->
+        <event-thumbnail #thumbnail [event]="event1"></event-thumbnail>
+        <h3>{{thumbnail.someProp}}</h3>
+        <button class="btn btn-primary" (click)="thumbnail.logFoo()">Click</button>
     </div>
     `
 })

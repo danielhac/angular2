@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 @Component({
     selector: 'event-thumbnail',
@@ -20,5 +20,10 @@ export class EventThumbnailComponent {
     // Public prop in typescript that allows any datatype for event
     // Input: tells Ang that this event will be passed from another comp (Parent to child)
     @Input() event:any
+    someProp:any = "testing value"
+
+    logFoo() {
+        console.log('foo')
+    }
 
 }

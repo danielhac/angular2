@@ -11,7 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var EventThumbnailComponent = (function () {
     function EventThumbnailComponent() {
+        this.someProp = "testing value";
     }
+    EventThumbnailComponent.prototype.logFoo = function () {
+        console.log('foo');
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
