@@ -13,6 +13,11 @@ var core_1 = require('@angular/core');
 var EventThumbnailComponent = (function () {
     function EventThumbnailComponent() {
     }
+    EventThumbnailComponent.prototype.getStartTimeClass = function () {
+        if (this.event && this.event.time === '8:00 am')
+            return ['green', 'bold'];
+        return [];
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Object)
@@ -20,8 +25,8 @@ var EventThumbnailComponent = (function () {
     EventThumbnailComponent = __decorate([
         core_1.Component({
             selector: 'event-thumbnail',
-            template: "\n        <div class=\"well hoverwell thumbnail\">\n            <h2>{{event?.name}}</h2>\n            <div>Date: {{event?.date}}</div>\n            <div [ngSwitch]=\"event?.time\">\n                Time: {{event?.time}}\n                <span *ngSwitchCase=\"'8:00 am'\">(Early Start)</span>\n                <span *ngSwitchCase=\"'10:00 am'\">(Late Start)</span>\n                <span *ngSwitchDefault>(Normal Start)</span>\n            </div>\n            <div>Price: {{event?.price}}</div>\n            <div *ngIf=\"event?.location\">\n                <span>Location: {{event?.location?.address}}</span>\n                <span class=\"pad-left\">{{event?.location?.city}}, {{event?.location?.country}}</span>\n            </div>\n            <div *ngIf=\"event?.onlineUrl\">\n                Online URL: {{event?.onlineUrl}}\n            </div>\n        </div>\n    ",
-            styles: ["\n        .thumbnail { min-height: 210px; }\n        .pad-left { margin-left: 5px; }\n        .well div { color: #2f96b4; }\n    "]
+            template: "\n        <div class=\"well hoverwell thumbnail\">\n            <h2>{{event?.name}}</h2>\n            <div>Date: {{event?.date}}</div>\n            <div [ngClass]=\"getStartTimeClass()\"\n                 [ngSwitch]=\"event?.time\">\n                Time: {{event?.time}}\n                <span *ngSwitchCase=\"'8:00 am'\">(Early Start)</span>\n                <span *ngSwitchCase=\"'10:00 am'\">(Late Start)</span>\n                <span *ngSwitchDefault>(Normal Start)</span>\n            </div>\n            <div>Price: {{event?.price}}</div>\n            <div *ngIf=\"event?.location\">\n                <span>Location: {{event?.location?.address}}</span>\n                <span class=\"pad-left\">{{event?.location?.city}}, {{event?.location?.country}}</span>\n            </div>\n            <div *ngIf=\"event?.onlineUrl\">\n                Online URL: {{event?.onlineUrl}}\n            </div>\n        </div>\n    ",
+            styles: ["\n        .bold { font-weight: bold; }\n        .green { color: #51a351 !important; }\n        .thumbnail { min-height: 210px; }\n        .pad-left { margin-left: 5px; }\n        .well div { color: #2f96b4; }\n    "]
         }), 
         __metadata('design:paramtypes', [])
     ], EventThumbnailComponent);
