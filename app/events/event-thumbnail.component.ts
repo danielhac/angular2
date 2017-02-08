@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core'
         <div class="well hoverwell thumbnail">
             <h2>{{event?.name}}</h2>
             <div>Date: {{event?.date}}</div>
-            <div [ngClass]="getStartTimeClass()"
+            <div [ngStyle]="getStartTimeStyle()"
                  [ngSwitch]="event?.time">
                 Time: {{event?.time}}
                 <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
@@ -26,8 +26,6 @@ import { Component, Input } from '@angular/core'
         </div>
     `,
     styles: [`
-        .bold { font-weight: bold; }
-        .green { color: #51a351 !important; }
         .thumbnail { min-height: 210px; }
         .pad-left { margin-left: 5px; }
         .well div { color: #2f96b4; }
@@ -38,10 +36,10 @@ export class EventThumbnailComponent {
     // Input: tells Ang that this event will be passed from another comp (Parent to child)
     @Input() event:any
 
-    getStartTimeClass() {
+    getStartTimeStyle():any {
         if (this.event && this.event.time === '8:00 am')
-            return ['green', 'bold']
-        return []
+            return {color: '#51a351', 'font-weight': 'bold'}
+        return {}
     }
 
 }
