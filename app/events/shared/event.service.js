@@ -10,14 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 // Adding Injectable decorator is imp for any service we're going to inject into comp or another service
 var core_1 = require('@angular/core');
+var RX_1 = require('rxjs/RX'); // An rxjs observable used to make asynchronous
 // This decorator is only req when injecting a service which also injects other services as dependencies of its own
 var EventService = (function () {
     function EventService() {
     }
     // Get all events
     EventService.prototype.getEvents = function () {
-        // Eventually will make AJAX call to fetch events from a server
-        return EVENTS;
+        // Subject: a type of observable
+        // subject.next(EVENTS): adding data to this observable stream
+        var subject = new RX_1.Subject();
+        // Mocking AJAX delay
+        setTimeout(function () { subject.next(EVENTS); subject.complete(); }, 100);
+        return subject;
     };
     // Get one event
     EventService.prototype.getEvent = function (id) {
@@ -25,6 +30,7 @@ var EventService = (function () {
         return EVENTS.find(function (event) { return event.id === id; });
     };
     EventService = __decorate([
+        // An rxjs observable used to make asynchronous
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
     ], EventService);

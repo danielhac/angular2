@@ -1,5 +1,6 @@
 // Adding Injectable decorator is imp for any service we're going to inject into comp or another service
 import { Injectable } from '@angular/core'
+import { Subject } from 'rxjs/RX' // An rxjs observable used to make asynchronous
 
 // This decorator is only req when injecting a service which also injects other services as dependencies of its own
 @Injectable()
@@ -7,8 +8,13 @@ export class EventService {
 
     // Get all events
     getEvents() {
-        // Eventually will make AJAX call to fetch events from a server
-        return EVENTS
+        // Subject: a type of observable
+        // subject.next(EVENTS): adding data to this observable stream
+        let subject = new Subject()
+        // Mocking AJAX delay
+        setTimeout(() => {subject.next(EVENTS); subject.complete(); }, 100)
+
+        return subject
     }
 
     // Get one event

@@ -3,6 +3,7 @@
 import { Component, OnInit } from '@angular/core'
 import { EventService } from './shared/event.service'
 import { ToastrService } from '../common/toastr.service'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
     template: `
@@ -22,16 +23,17 @@ import { ToastrService } from '../common/toastr.service'
 
 // OnInit: Ang Ts declarations and let Ts know that this comp implements OnInit
 export class EventsListComponent implements OnInit {
-    events:any[]
+    events:any
 
     // Inject service - can access elsewhere in class like in ngOnInit
-    constructor(private eventService: EventService, private toastr: ToastrService) {
+    constructor(private eventService: EventService, private toastr: ToastrService, private route:ActivatedRoute) {
 
     }
 
     // Need to have this comp loaded - comp have lifecycle hooks that you can hook into and ngOnInit is one
+    // 'events' matches itself in 'resolve: {events:EventListResolver}' in routes.ts
     ngOnInit() {
-        this.events = this.eventService.getEvents()
+        this.events = this.route.snapshot.data['events']
     }
 
     handleThumbnailClick(eventName) {
