@@ -20,6 +20,8 @@ var toastr_service_1 = require('./common/toastr.service');
 var event_details_component_1 = require('./events/event-details/event-details.component');
 var routes_1 = require('./routes');
 var create_event_component_1 = require('./events/create-event.component');
+var _404_components_1 = require('./errors/404.components');
+var event_route_activator_service_1 = require('./events/event-details/event-route-activator.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,8 +32,8 @@ var AppModule = (function () {
                 router_1.RouterModule.forRoot(routes_1.appRoutes)
             ],
             declarations: [events_app_component_1.EventsAppComponent, events_list_component_1.EventsListComponent, event_thumbnail_component_1.EventThumbnailComponent, event_details_component_1.EventDetailsComponent,
-                navbar_component_1.NavBarComponent, create_event_component_1.CreateEventComponent],
-            providers: [event_service_1.EventService, toastr_service_1.ToastrService],
+                navbar_component_1.NavBarComponent, create_event_component_1.CreateEventComponent, _404_components_1.Error404Component],
+            providers: [event_service_1.EventService, toastr_service_1.ToastrService, event_route_activator_service_1.EventRouteActivator],
             bootstrap: [events_app_component_1.EventsAppComponent]
         }), 
         __metadata('design:paramtypes', [])
