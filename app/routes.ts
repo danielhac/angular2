@@ -13,7 +13,7 @@ export const appRoutes:Routes = [
     // full: redirect if it fully matches the specified path string OR...
     // prefix: redirect if URL starts with specified path string
     // Routes must be in specific order - events/new should be first to not affect the rest (think of if/else)
-    { path: 'events/new', component: CreateEventComponent },
+    { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreateEvent'] },
     { path: 'events', component: EventsListComponent },
     { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivator] },
     { path: '404', component: Error404Component },

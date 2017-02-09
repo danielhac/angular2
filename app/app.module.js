@@ -33,7 +33,12 @@ var AppModule = (function () {
             ],
             declarations: [events_app_component_1.EventsAppComponent, events_list_component_1.EventsListComponent, event_thumbnail_component_1.EventThumbnailComponent, event_details_component_1.EventDetailsComponent,
                 navbar_component_1.NavBarComponent, create_event_component_1.CreateEventComponent, _404_components_1.Error404Component],
-            providers: [event_service_1.EventService, toastr_service_1.ToastrService, event_route_activator_service_1.EventRouteActivator],
+            providers: [
+                event_service_1.EventService,
+                toastr_service_1.ToastrService,
+                event_route_activator_service_1.EventRouteActivator,
+                { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
+            ],
             bootstrap: [events_app_component_1.EventsAppComponent]
         }), 
         __metadata('design:paramtypes', [])
@@ -41,4 +46,9 @@ var AppModule = (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
+function checkDirtyState(component) {
+    if (component.isDirty)
+        return window.confirm('The event has not been saved, do you still want to cancel?');
+    return true;
+}
 //# sourceMappingURL=app.module.js.map
