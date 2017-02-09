@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core'
 import { EventService } from './shared/event.service'
+import { ToastrService } from '../common/toastr.service'
 
 @Component({
     selector: 'events-list',
@@ -13,7 +14,7 @@ import { EventService } from './shared/event.service'
             <div *ngFor="let event of events" class="col-md-5">
                 <!--#thumbnail: this variable now can be accessed anywhere in the template-->
                 <!--*ngFor: repeating data-->
-                <event-thumbnail [event]="event"></event-thumbnail>
+                <event-thumbnail (click)="handleThumbnailClick(event.name)" [event]="event"></event-thumbnail>
             </div>
         </div>
     </div>
@@ -25,12 +26,16 @@ export class EventsListComponent implements OnInit {
     events:any[]
 
     // Inject service - can access elsewhere in class like in ngOnInit
-    constructor(private eventService: EventService) {
+    constructor(private eventService: EventService, private toastr: ToastrService) {
 
     }
 
     // Need to have this comp loaded - comp have lifecycle hooks that you can hook into and ngOnInit is one
     ngOnInit() {
         this.events = this.eventService.getEvents()
+    }
+
+    handleThumbnailClick(eventName) {
+        this.toastr.success(eventName)
     }
 }
