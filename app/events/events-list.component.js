@@ -27,7 +27,6 @@ var EventsListComponent = (function () {
     };
     EventsListComponent = __decorate([
         core_1.Component({
-            selector: 'events-list',
             template: "\n    <div>\n        <h1>Upcoming Angular 2 Events</h1>\n        <hr/>\n        <div class=\"row\">\n            <div *ngFor=\"let event of events\" class=\"col-md-5\">\n                <!--#thumbnail: this variable now can be accessed anywhere in the template-->\n                <!--*ngFor: repeating data-->\n                <event-thumbnail (click)=\"handleThumbnailClick(event.name)\" [event]=\"event\"></event-thumbnail>\n            </div>\n        </div>\n    </div>\n    "
         }), 
         __metadata('design:paramtypes', [event_service_1.EventService, toastr_service_1.ToastrService])
