@@ -4,9 +4,17 @@ import { Injectable } from '@angular/core'
 // This decorator is only req when injecting a service which also injects other services as dependencies of its own
 @Injectable()
 export class EventService {
+
+    // Get all events
     getEvents() {
         // Eventually will make AJAX call to fetch events from a server
         return EVENTS
+    }
+
+    // Get one event
+    getEvent(id:number) {
+        // Eventually will make AJAX call to fetch events from a server
+        return EVENTS.find(event => event.id === id)
     }
 }
 

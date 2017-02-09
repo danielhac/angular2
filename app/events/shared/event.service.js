@@ -14,9 +14,15 @@ var core_1 = require('@angular/core');
 var EventService = (function () {
     function EventService() {
     }
+    // Get all events
     EventService.prototype.getEvents = function () {
         // Eventually will make AJAX call to fetch events from a server
         return EVENTS;
+    };
+    // Get one event
+    EventService.prototype.getEvent = function (id) {
+        // Eventually will make AJAX call to fetch events from a server
+        return EVENTS.find(function (event) { return event.id === id; });
     };
     EventService = __decorate([
         core_1.Injectable(), 
